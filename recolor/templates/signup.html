@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Create Account </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="myCard">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="myLeftCtn">
+                        <form class="myForm text-center" name="signup" method="POST" action="{% url 'signup' %}">
+                            {% csrf_token %}
+                            <header>Create new account</header><br>
+                            <div class="form-group">
+                                <i class="fas fa-envelope"></i>
+                                <input class="myInput" placeholder="Email" type="email" id="email" name="email"
+                                    required>
+                            </div><br>
+
+                            <div class="form-group">
+                                <i class="fas fa-lock"></i>
+                                <input class="myInput" placeholder="Password" type="password" id="password"
+                                    name="password1" required>
+                            </div><br>
+
+                            <div class="form-group">
+                                <i class="fas fa-lock"></i>
+                                <input class="myInput" placeholder="Re Enter Password" type="password" id="password"
+                                    name="password2" required>
+                            </div><br>
+
+                            <input type="submit" class="butt" value="CREATE ACCOUNT">
+                            {% if err %}
+                            <strong>
+                                <p style="color: red; margin-top: 20px;">{{ err }}</p>
+                            </strong>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="myRightCtn">
+                        <div class="box">
+                            <header>Hello User !</header>
+
+                            <p style="color: #fff;font-size: 15px;"> If you are not registered sign up now to
+                                use the online recolorisation tool.It is completely free for members.<br>Already a
+                                member
+                                login now !
+                            </p>
+                            <a href="{% url 'login' %}"><input type="button" class="butt_out" value="Login" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

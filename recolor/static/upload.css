@@ -1,0 +1,133 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
+body {
+  margin:0;
+  padding:0;
+  font-family: "Lato", sans-serif; 
+  background: #fbf3ff; 
+  /*display: flex;*/
+  align-items: center;
+  justify-content: center;
+  /*min-height: 100vh;*/
+}
+.col-md-4{
+  padding-left: 15px;
+  padding-right: 15px;
+}  
+.bg-navbar{
+  background: linear-gradient(to right, #303030, #000000);
+  padding: 25px;
+  top: 0%;
+}
+.container{
+  color: #fff;
+  padding: 15px;
+}
+/*.col-md-6 .h2{
+  padding: 10px;
+  display: block;
+}
+.col-md-6 .p{
+  padding-left: 15px;
+  padding-right: 15px;
+}*/
+.leftintro{
+  padding: 10px;
+  text-align: center;
+}
+.rightintro{
+  text-align: center;
+}
+.form{
+  width:400px;
+  position: relative;
+  margin-top: 150px;
+  margin-bottom: 50%;
+  margin-left: 50%;
+}
+.file-upload-wrapper{
+  position:relative;
+  width:100%;
+  height:60px;
+  cursor: pointer;
+  border-radius: 25px;
+}
+.file-upload-wrapper::after{
+  content:attr(data-text);
+  font-size: 18px;
+  position:absolute;
+  top:0;
+  left:0;
+  background:#fff;
+  padding:5px 15px;
+  display: block;
+  width:calc(100% - 40px);
+  pointer-events:none;
+  z-index: 20;
+  height:50px;
+  line-height: 40px;
+  color:#999;
+  border-radius: 25px;
+  font-weight: 500;
+}
+.file-upload-wrapper::before{
+  content:"Upload";
+  position:absolute;
+  top:0;
+  right:0;
+  display: inline-block;
+  height:50px;
+  background: -webkit-linear-gradient(to right, #585858, #000000);
+  background: linear-gradient(to right, #585858, #000000);
+  color:#fff;
+  font-weight: 700;
+  z-index: 25;
+  font-size: 14px;
+  line-height: 55px;
+  padding:0 15px;
+  text-transform: uppercase;
+  pointer-events: none;
+  border-radius: 25px;
+  transition: 0.5s ease-in-out;
+}
+.file-upload-wrapper:hover::before{
+  background: -webkit-linear-gradient(to right, #000000, #585858);
+  background: linear-gradient(to right, #000000, #585858);
+}
+.file-upload-wrapper input{
+  opacity: 0;
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index: 99;
+  height:40px;
+  margin:0;
+  padding:0;
+  display:block;
+  cursor: pointer;
+  width:100%;
+}
+.button{
+    background: linear-gradient(to right, #585858, #000000);
+    color: #fff;
+    width: 100px;
+    margin-left: 130px;
+    border: 2px solid#fff;
+    border-radius: 25px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
+    -moz-box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
+    box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
+}
+.button:hover{
+    border: 2px solid#686868;
+    background: linear-gradient(45deg, #686868, #303030);
+}  
+.leftside{
+  text-align: center;
+}
+.rightside{
+  text-align: center;
+  
+}

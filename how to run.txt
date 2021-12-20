@@ -1,0 +1,8 @@
+proj_recolor\Scripts\activate.bat
+
+or
+
+proj_recolor\Scripts\activate
+
+
+python manage.py runserver

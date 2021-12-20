@@ -1,0 +1,96 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    {% if user.is_superuser %}
+        <h1>This is the Developer Page</h1>
+        <h3>SOURCE CODE FOR DEUTERANOPIA IMAGE RECOLOURING:-
+        <br>
+        <br>    class Transforms:
+        <br>    """
+        <br>    Holds transformation matrices.
+        <br>        """
+        <br>
+        <br>        @staticmethod
+        <br>        def rgb_to_lms():
+        <br>            """
+        <br>            Matrix for RGB color-space to LMS color-space transformation.
+        <br>            """
+        <br>            return np.array([[17.8824   , 43.5161 , 4.11935],
+        <br>                             [ 3.45565  , 27.1554 , 3.86714],
+        <br>                             [ 0.0299566, 0.184309, 1.46709]]).T
+        <br>
+        <br>        @staticmethod
+        <br>        def lms_to_rgb() -> np.ndarray:
+        <br>           """
+        <br>            Matrix for LMS colorspace to RGB colorspace transformation.
+        <br>            """
+        <br>            return np.array([[ 0.0809, -0.1305,  0.1167],
+        <br>                             [-0.0102,  0.0540, -0.1136],
+        <br>                             [-0.0004, -0.0041,  0.6935]]).T
+        <br>
+        <br>
+        <br>        @staticmethod
+        <br>        def lms_deutranopia_sim() -> np.ndarray:
+        <br>            """
+        <br>           Matrix for Simulating Deutranopia colorblindness from LMS color-space.
+        <br>            :param degree: Deutranopia degree.
+        <br>            """
+        <br>            return np.array([[1       , 0, 0      ],
+        <br>                             [0.494207, 0, 1.24827],
+        <br>                             [0       , 0, 1      ]]).T
+        <br>
+        <br>    
+        <br>
+        <br>        @staticmethod
+        <br>        def correction_matrix() -> np.ndarray:
+        <br>            """
+        <br>            Matrix for Correcting Colorblindness (deuteranomaly) from LMS color-space.
+        <br>            """
+        <br>            return np.array([[0.5, 0.5 , 0   ],
+        <br>                             [0  , 1   , 0   ],
+        <br>                             [0  , 0.25, 0.75]]).T
+        <br>
+        <br>            
+        <br>
+        <br>   class Utils:
+        <br>        """
+        <br>        Couple of utils for loading the images.
+        <br>        """
+        <br>        @staticmethod
+        <br>        def load_rgb(image):
+        <br>            # img_rgb = np.array(Image.open(path)) / 255
+        <br>            image = image / 255
+        <br>            return image
+        <br>
+        <br>        @staticmethod
+        <br>        def load_lms(image):
+        <br>            # img_rgb = np.array(Image.open(path)) / 255
+        <br>            image = image / 255
+        <br>            img_lms = np.dot(image[:,:,:3], Transforms.rgb_to_lms())
+        <br>
+        <br>            return img_lms
+        </h3>
+    {% else %}
+        <h1>You Are Not Authenticated</h1>
+    {% endif %}
+    {% if user.is_authenticated %}
+        <a href="javascript:{document.getElementById('logout').submit()}" class="button"
+          style="background-color: rgb(0, 0, 0); border-radius: 5px; padding: 10px; text-decoration: none; color: rgb(255, 255, 255);">Logout</a>
+        <form method="POST" action="{% url 'home' %}" id="logout">
+            {% csrf_token %}
+            <input type="hidden">
+        </form>
+        <br>
+        <a href="{% url 'upload' %}" class="button"
+          style="background-color: rgb(0, 0, 0); border-radius: 5px; padding: 10px; text-decoration: none; color: rgb(255, 255, 255);">Upload</a>
+        <br>
+    {% endif %}
+</body>
+</html>
